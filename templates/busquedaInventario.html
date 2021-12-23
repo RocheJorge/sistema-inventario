@@ -1,0 +1,123 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block extrahead %}
+<!-- DataTables -->
+<link rel="stylesheet"
+  href="{% static 'lib/AdminLTE-3.1.0/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+<link rel="stylesheet"
+  href="{% static 'lib/AdminLTE-3.1.0/plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+<link rel="stylesheet"
+  href="{% static 'lib/AdminLTE-3.1.0/plugins/datatables-buttons/css/buttons.bootstrap4.min.css' %}">
+{% endblock extrahead %}
+
+{% block contenido %}
+
+<div class="content">
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <h2 class="text-center display-4">Busqueda</h2>
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <form method="GET">
+            <div class="input-group">
+              <input type="search" class="form-control form-control-lg" placeholder="Ingrese bien Mueble" name="buscar">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-lg btn-default">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% if resultado %}
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="busqueda" class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" style="width: 20%">N° PROVISIONAL DEL BIEN</th>
+                  <th scope="col" style="width: 20%">NOMBRE</th>
+                  <th scope="col" style="width: 20%">DESCRIPCION</th>
+                  <th scope="col" style="width: 20%">CARACTERISTICAS</th>
+                  <th scope="col" style="width: 20%">ESTADO</th>
+                  <th scope="col" style="width: 20%">UBICACION</th>
+                  <th scope="col" style="width: 20%">OBSERVACION</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for r in resultado %}
+                <tr>
+                  <td>{{ r.codigoDelBien }}</td>
+                  <td>{{ r.nombre }}</td>
+                  <td>{{ r.descripcion }}</td>
+                  <td>{{ r.caracteristica }}</td>
+                  <td>{{ r.estado }}</td>
+                  <td>{{ r.departamento}}</td>
+                  <td>{{ r.observacion }}</td>
+                </tr>
+                {% endfor %}
+
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+
+{% endif %}
+
+{% endblock contenido %}
+
+{% block extrajs %}
+<!-- jQuery -->
+<script src="{% static 'lib/AdminLTE-3.1.0/plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'lib/AdminLTE-3.1.0/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- DataTables  & Plugins -->
+<script src="{% static 'lib/AdminLTE-3.1.0/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'lib/AdminLTE-3.1.0/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'lib/AdminLTE-3.1.0/plugins/datatables-responsive/js/dataTables.responsive.min.js' %}">
+</script>
+<script src="{% static 'lib/AdminLTE-3.1.0/plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}">
+</script>
+<script src="{% static 'lib/AdminLTE-3.1.0/plugins/datatables-buttons/js/dataTables.buttons.min.js' %}">
+</script>
+<script src="{% static 'lib/AdminLTE-3.1.0/plugins/datatables-buttons/js/buttons.bootstrap4.min.js' %}">
+</script>
+
+<script>
+  $(function () {
+    $('#busqueda').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+{% endblock extrajs %}

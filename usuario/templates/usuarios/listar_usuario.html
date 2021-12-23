@@ -1,0 +1,48 @@
+{% extends 'lista.html' %}
+
+{% load static %}
+
+{% block columnas %}
+
+<tr>
+    <th scope="col" style="width: 20%">Username</th>
+    <th scope="col" style="width: 20%">Email</th>
+    <th scope="col" style="width: 20%">Nombres</th>
+    <th scope="col" style="width: 20%">Apellidos</th>
+    <th scope="col" style="width: 20%">Opciones</th>
+</tr>
+
+<!-- Mensaje de actualizado correctamente -->
+{% if messages %}
+{% for message in messages %}
+<script>
+    Swal.fire({
+        title: 'Completado',
+        text: '{{ message|safe }}',
+        icon: 'success',
+    })
+</script>
+{% endfor %}
+{% endif %}
+
+{% endblock columnas %}
+
+{% block filas %}
+
+{% for usuario in object_list %}
+<tr>
+    <td>{{ usuario.username }}</td>
+    <td>{{ usuario.email }}</td>
+    <td>{{ usuario.nombres }}</td>
+    <td>{{ usuario.apellidos }}</td>
+    <td>
+        <a href="{% url 'usuario:editar_usuario' usuario.id %}"><button type="button" class="btn btn-primary btn-sm">
+                <i class="fas fa-edit"></i></button></a>
+
+        <a href="{% url 'usuario:eliminar_usuario' usuario.id %}"><button type="button" class="btn btn-danger btn-sm">
+                <i class="fas fa-trash-alt"></i></button></a>
+    </td>
+</tr>
+{% endfor %}
+
+{% endblock filas %}

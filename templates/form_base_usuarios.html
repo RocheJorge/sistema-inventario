@@ -1,0 +1,47 @@
+{% extends 'index.html' %} 
+
+{% block contenido %}
+
+<form method="POST" action=".">
+  <div class="card-header">
+    <h3 class="card-title">
+      <i class="fas fa-plus"></i>
+      {{ titulo_form }}
+    </h3>
+  </div>
+
+  <div class="card-body">
+    {% csrf_token %}
+    {{ form.as_p }}
+  </div>
+
+  <div class="card-footer">
+    <button type="submit" class="btn btn-primary btn-flat btnTest">
+      <i class="fas fa-save"></i> {{ titulo_accion }}
+    </button>
+    <a href="{{ lista_url }}"><button type="button" class="btn btn-danger"> Cancelar </button></a>
+  </div>
+</form>
+
+<!-- Mensaje de Errores -->
+
+<script>
+
+  {% if form.errors %}
+  let errors = "";
+      {% for field in form %}
+          {% for error in field.errors %}
+          errors += "{{ error }}\n";
+          {% endfor %}
+      {% endfor %}
+
+    Swal.fire({
+        title: 'Error',
+        text: errors,
+        icon: 'error',
+    })
+  {% endif %}
+
+</script>
+
+{% endblock contenido %}

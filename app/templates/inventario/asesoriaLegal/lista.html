@@ -1,0 +1,56 @@
+{% extends 'lista.html' %}
+
+{% block columnas %}
+
+<tr>
+  <th scope="col" style="width: 20%">N° PROVISIONAL DEL BIEN</th>
+  <th scope="col" style="width: 20%">NOMBRE</th>
+  <th scope="col" style="width: 20%">DESCRIPCION</th>
+  <th scope="col" style="width: 20%">CARACTERISTICAS</th>
+  <th scope="col" style="width: 20%">ESTADO</th>
+  <th scope="col" style="width: 20%">UBICACION</th>
+  <th scope="col" style="width: 20%">OBSERVACION</th>
+  <th scope="col" style="width: 20%">OPCIONES</th>
+</tr>
+
+<!-- Mensaje de actualizado correctamente -->
+{% if messages %}
+     {% for message in messages %}
+        <script>
+          Swal.fire({
+          title: 'Completado',
+          text: '{{ message|safe }}',
+          icon: 'success',
+          })
+        </script>
+     {% endfor %}
+ {% endif %}
+
+{% endblock columnas %}
+
+{% block filas %} 
+
+{% for aseLegal in object_list %}
+<tr>
+  <td>{{ aseLegal.codigoDelBien }}</td>
+  <td>{{ aseLegal.nombre }}</td>
+  <td>{{ aseLegal.descripcion }}</td>
+  <td>{{ aseLegal.caracteristica }}</td>
+  <td>{{ aseLegal.estado }}</td>
+  <td>{{ aseLegal.departamento}}</td>
+  <td>{{ aseLegal.observacion }}</td>
+  <td>
+    <a href="{% url 'app:editar_inventario_asesoria_legal' aseLegal.id %}"
+      ><button type="button" class="btn btn-primary btn-sm">
+        <i class="fas fa-edit"></i></button
+    ></a>
+
+    <a href="{% url 'app:eliminar_inventario_asesoria_legal' aseLegal.id %}"
+      ><button type="button" class="btn btn-danger btn-sm">
+        <i class="fas fa-trash-alt"></i></button
+    ></a>
+  </td>
+</tr>
+{% endfor %} 
+
+{% endblock filas %}

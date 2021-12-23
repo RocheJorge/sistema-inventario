@@ -1,0 +1,11 @@
+    # listar
+    path('inventario/banhavi_cobranza/lista/', InventarioBanhaviCobranzaListView.as_view(), name='lista_inventario_banhavi_cobranza'),
+
+    # crear
+    path('inventario/banhavi_cobranza/crear/', InventarioBanhaviCobranzaCreateView.as_view(), name='crear_inventario_banhavi_cobranza'),
+
+    # Editar
+    path('inventario/banhavi_cobranza/editar/<int:pk>/', InventarioBanhaviCobranzaUpdateView.as_view(), name='editar_inventario_banhavi_cobranza'),
+
+    # Eliminar
+    path('inventario/banhavi_cobranza/eliminar/<int:pk>/', InventarioBanhaviCobranzaDeleteView.as_view(), name='eliminar_inventario_banhavi_cobranza'),

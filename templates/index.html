@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventario Minhvi</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'img/favicon_GMVV_2.ico' %}">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="{% static 'lib/adminlte-3.1.0/plugins/fontawesome-free/css/all.min.css' %}" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'lib/adminlte-3.1.0/css/adminlte.min.css' %}" />
+    <!-- jQuery -->
+    <script src="{% static 'lib/adminlte-3.1.0/plugins/jquery/jquery.min.js' %}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{% static 'lib/adminlte-3.1.0/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- AdminLTE App -->
+    <script src="{% static 'lib/adminlte-3.1.0/js/adminlte.min.js' %}"></script>
+    <!-- sweet alert Offline -->
+    <script src="{% static 'lib/sweetAlert2/dist/sweetalert2.all.min.js' %}"></script>
+
+    {% block extrahead %}
+    {% endblock extrahead %}
+
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <!-- Header -->
+        {% include 'header.html' %}
+        <!-- Sidebar -->
+        {% include 'sidebar.html' %}
+        <!-- Content -->
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">{{ titulo }}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+                    {% block contenido %}
+
+                    {% include "opciones_inicio.html" %}
+
+                    {% endblock contenido %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    {% include 'footer.html' %}
+
+    {% block extrajs %}
+    {% endblock extrajs %}
+
+</body>
+
+</html>

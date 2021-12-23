@@ -1,0 +1,8 @@
+.bg-img {
+    min-height: 100vh;
+    background: url(../img/Logo_GMVV_Fondo.png);
+    background: url(../img/Logo_GMVV_Fondo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

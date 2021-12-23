@@ -1,0 +1,56 @@
+{% extends 'lista.html' %}
+
+{% block columnas %}
+
+<tr>
+  <th scope="col" style="width: 20%">N° PROVISIONAL DEL BIEN</th>
+  <th scope="col" style="width: 20%">NOMBRE</th>
+  <th scope="col" style="width: 20%">DESCRIPCION</th>
+  <th scope="col" style="width: 20%">CARACTERISTICAS</th>
+  <th scope="col" style="width: 20%">ESTADO</th>
+  <th scope="col" style="width: 20%">UBICACION</th>
+  <th scope="col" style="width: 20%">OBSERVACION</th>
+  <th scope="col" style="width: 20%">OPCIONES</th>
+</tr>
+
+<!-- Mensaje de actualizado correctamente -->
+{% if messages %}
+     {% for message in messages %}
+        <script>
+          Swal.fire({
+          title: 'Completado',
+          text: '{{ message|safe }}',
+          icon: 'success',
+          })
+        </script>
+     {% endfor %}
+ {% endif %}
+
+{% endblock columnas %}
+
+{% block filas %} 
+
+{% for ac in object_list %}
+<tr>
+  <td>{{ ac.codigoDelBien }}</td>
+  <td>{{ ac.nombre }}</td>
+  <td>{{ ac.descripcion }}</td>
+  <td>{{ ac.caracteristica }}</td>
+  <td>{{ ac.estado }}</td>
+  <td>{{ ac.departamento}}</td>
+  <td>{{ ac.observacion }}</td>
+  <td>
+    <a href="{% url 'app:editar_inventario_atencion_ciudadano' ac.id %}"
+      ><button type="button" class="btn btn-primary btn-sm">
+        <i class="fas fa-edit"></i></button
+    ></a>
+
+    <a href="{% url 'app:eliminar_inventario_atencion_ciudadano' ac.id %}"
+      ><button type="button" class="btn btn-danger btn-sm">
+        <i class="fas fa-trash-alt"></i></button
+    ></a>
+  </td>
+</tr>
+{% endfor %} 
+
+{% endblock filas %}

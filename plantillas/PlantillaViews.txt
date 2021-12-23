@@ -1,0 +1,196 @@
+class Inicio(TemplateView):
+    """Le indicamos que template usara para mostrar la pagina de inicio
+    
+    Argumentos:
+        TemplateView (parametro): Vista creada para mostrar el TEMPLATE
+        template_name: Template que usara para la pagina de inicio que se encuentra en TEMPLATES
+        
+        
+    Returns:
+        una consulta    
+    """
+    
+    
+    template_name = 'index.html'
+    
+    class DepartamentosListView(ListView):
+        """Contiene la Logica para listar los departamentos y mostrarlos por pantalla
+    
+    Argumentos:
+        ListView (parametro): Vista creada para LISTAR
+        model: Modelo a utilizarse creado en MODELS.PY
+        template_name: Template que se usara para la clase ListView que se encuentra en TEMPLATES
+
+
+    Returns:
+        una consulta
+    """
+    
+    
+    model = Departamento
+    template_name = "departamentos/lista.html"
+    
+    def get_context_data(self, **kwargs):
+        """Esta funcion contiene el contexto a enviar al template
+        Aqui definimos todas las variables que necesitamos enviar a nuestro template definido en TEMPLATE_NAME, se agregan a un diccionario general para poder ser enviados
+
+        
+        Returns:
+            el contexto al template que se esta usando
+        """
+        
+        
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Listado de Departamentos'
+        context['crear_url'] = reverse_lazy('app:crear_departamento')
+        context['lista_url'] = reverse_lazy('app:lista_departamento')
+        return context
+
+class DepartamentosCreateView(SuccessMessageMixin, CreateView):
+    """Contiene la logica para crear los departamentos y ser enviados al template
+
+    Argumentos:
+        SuccessMessageMixin (parametro): Enviamos el mensaje que queremos mostrar por pantalla indicandole al usuario que el departamento fue creado exitosamente
+        CreateView (parametro): Vista creada para la creacion
+        model: Modelo a utilizarse creado desde MODELS.PY
+        form_class: Formulario de django referente al modelo creado en FORMS.PY
+        template_name: Template que se usara para la clase CreateView que se encuentra en TEMPLATES
+        succes_url: Url a la redirecciona al haber sido CREADO exitosamente
+        success_message: Mensaje de que se CREO exitosamente
+
+
+    Returns:
+        succes_url: Url a redireccionar
+        success_message: Mensaje a mostrar por pantalla
+    """
+    
+    
+    model = Departamento
+    form_class = RegistrarDepartamentoForm
+    template_name = 'departamentos/crear.html'
+    success_url = reverse_lazy('app:lista_departamento')
+    success_message = "%(nombre)s Fue Agregado Correctamente"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Creacion de un Departamento'
+        context['titulo_accion'] = 'Guardar Registro'
+        context['lista_url'] = reverse_lazy('app:lista_departamento')
+        return context
+
+class DepartamentosUpdateView(SuccessMessageMixin, UpdateView):
+    """Contiene la logica para actualizar los departamentos y ser enviados al template
+
+    Argumentos:
+        SuccessMessageMixin (parametro): Enviamos el mensaje que queremos mostrar por pantalla indicandole al usuario que el departamento fue actualizado exitosamente
+        UpdateView (parametro): Vista creada para la actualizacion
+        model: Modelo a utilizarse creado desde MODELS.PY
+        form_class: Formulario de django referente al modelo creado en FORMS.PY
+        template_name: Template que se usara para la clase UpdateView que se encuentra en TEMPLATES
+        succes_url: Url a la redirecciona al haber sido ACTUALIZADO exitosamente
+        success_message: Mensaje de que se ACTUALIZADO exitosamente
+
+
+    Returns:
+        succes_url: Url a redireccionar
+        success_message: Mensaje a mostrar por pantalla
+    """
+    
+    
+    model = Departamento
+    form_class = RegistrarDepartamentoForm
+    template_name = 'departamentos/crear.html'
+    success_url = reverse_lazy('app:lista_departamento')
+    success_message = "%(nombre)s Fue Actualizado Correctamente"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Editar un Departamento'
+        context['titulo_accion'] = 'Actualizar Registro'
+        context['lista_url'] = reverse_lazy('app:lista_departamento')
+        return context
+
+class DepartamentosDeleteView(DeleteView):
+    """Contiene la logica para Eliminar los departamentos y ser enviados al template
+
+    Argumentos:
+        DeleteView (parametro): Vista creada para la ELIMINACION
+        model: Modelo a utilizarse creado desde MODELS.PY
+        template_name: Template que se usara para la clase DeleteView que se encuentra en TEMPLATES
+        succes_url: Url a la redirecciona al haber sido ELIMINADO exitosamente
+
+
+    Returns:
+        succes_url: Url a redireccionar
+    """
+    
+    
+    model = Departamento
+    template_name = 'departamentos/eliminar.html'
+    success_url = reverse_lazy('app:lista_departamento')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Eliminar Departamento'
+        context['lista_url'] = reverse_lazy('app:lista_departamento')
+        return context
+    
+'''""""""""""" Plantilla Views de Inventarios """"""""""""""""'''
+
+# Listar
+
+class InventarioListView(ListView):
+    model = 
+    template_name = 
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Inventario '
+        context['crear_url'] = reverse_lazy('app:')
+        context['lista_url'] = reverse_lazy('app:')
+        return context
+    
+# Crear
+
+class InventarioCreateView(SuccessMessageMixin, CreateView):
+    model = 
+    form_class = 
+    template_name = ''
+    success_url = reverse_lazy('')
+    success_message = "%(nombre)s Fue Agregado Correctamente"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Creacion Inventario'
+        context['titulo_accion'] = 'Guardar Registro'
+        context['lista_url'] = reverse_lazy('app:')
+        return context
+
+# Editar    
+
+class InventarioUpdateView(SuccessMessageMixin, UpdateView):
+    model = 
+    form_class = 
+    template_name = ''
+    success_url = reverse_lazy('app:lista_inventario_banhavi_cobranza')
+    success_message = "%(nombre)s Fue Actualizado Correctamente"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Editar Inventario'
+        context['titulo_accion'] = 'Actualizar Registro'
+        context['lista_url'] = reverse_lazy('app:')
+        return context
+    
+# Eliminar
+
+class InventarioDeleteView(DeleteView):
+    model = 
+    template_name = ''
+    success_url = reverse_lazy('app:')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = 'Eliminar Inventario '
+        context['lista_url'] = reverse_lazy('app:')
+        return context

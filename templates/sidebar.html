@@ -1,0 +1,272 @@
+{% load static %}
+<aside class="main-sidebar sidebar-light-primary elevation-4">
+  <a href="#" class="brand-link">
+    <img src="{% static 'img/logo-2.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      style="opacity: 0.8" />
+    <span class="brand-text font-weight-light">MINHVI</span>
+  </a>
+  <div class="sidebar">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img src="{% static 'lib/AdminLTE-3.1.0/img/avatar.png' %}" class="img-circle elevation-2" alt="User Image" />
+      </div>
+      <div class="info">
+        <a href="{% url 'usuario:perfil_usuario' %}" class="d-block">{{ user.username|upper }}</a>
+      </div>
+    </div>
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-header">INVENTARIO</li>
+
+        {% if request.user.is_staff %}
+        <li class="nav-item">
+          <a href="{% url 'usuario:listar_usuarios' %}" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>Usuarios</p>
+          </a>
+        </li>
+        {% endif %}
+
+        <li class="nav-item">
+          <a href="{% url 'app:lista_departamento' %}" class="nav-link">
+            <i class="nav-icon fas fa-building"></i>
+            <p>Departamento</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'app:lista_jefe_departamento' %}" class="nav-link">
+            <i class="nav-icon fas fa-address-card"></i>
+            <p>Jefe departamento</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'app:lista_responsable_patrimonio' %}" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>Responsable</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'app:lista_direccion_bienes' %}" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+            <p>Dirección bienes</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="{% url 'app:busqueda_inventario' %}" class="nav-link">
+            <i class="nav-icon fas fa-search"></i>
+            <p>Busqueda</p>
+          </a>
+        </li>
+        <!-- Inicio menu desplegable de inventario -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-archive"></i>
+            <p>
+              Inventarios
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <!-- Inicio 1er departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Administración</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 1er departamento -->
+
+          <!-- Inicio 2do departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_asesoria_legal' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Asesoria Legal</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 2do departamento -->
+
+          <!-- Inicio 3er departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_atencion_ciudadano' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Atencion al Ciudadano</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 3er departamento -->
+
+          <!-- Inicio 4to departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_banhavi_cobranza' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Banhavi Cobranza</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 4to departamento -->
+
+          <!-- Inicio 5to departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_banhavi_fao' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Banhavi FAO</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 5to departamento -->
+
+          <!-- Inicio 6to departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_bnbt' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Barrio Nuevo Barrio Tricolor</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 6to departamento -->
+
+          <!-- Inicio 7mo departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_direccion' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Dirección</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 7mo departamento -->
+
+          <!-- Inicio 8vo departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_gestion_humana' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Gestion Humana</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 8vo departamento -->
+
+          <!-- Inicio 9no departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_inmobiliaria_nacional' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Inmobiliaria Nacional</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 9no departamento -->
+
+          <!-- Inicio 10mo departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_intu' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Intu</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 10mo departamento -->
+
+          <!-- Inicio 11 departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_obras' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Obras</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 11 departamento -->
+
+          <!-- Inicio 12 departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_redes_populares' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Redes Populares</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 12 departamento -->
+
+          <!-- Inicio 13 departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_sala_situacional' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Sala Situacional</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 13 departamento -->
+
+          <!-- Inicio 14 departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_saren' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Saren</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 14 departamento -->
+
+          <!-- Inicio 15 departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_jubilados' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Jubilados</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 15 departamento -->
+
+          <!-- Inicio 16 departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_sistemas' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Sistemas</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 16 departamento -->
+
+          <!-- Inicio 17 departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_sunavi' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Sunavi</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 17 departamento -->
+
+          <!-- Inicio 18 departamento -->
+          <ul class="nav nav-treeview" style="display: none">
+            <li class="nav-item">
+              <a href="{% url 'app:lista_inventario_vivienda' %}" class="nav-link">
+                <i class="nav-icon fas fa-dot-circle"></i>
+                <p>Vivienda</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Fin 18 departamento -->
+        </li>
+        <!-- Fin menu desplegable de inventario -->
+      </ul>
+    </nav>
+  </div>
+</aside>

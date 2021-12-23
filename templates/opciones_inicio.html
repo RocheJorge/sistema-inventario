@@ -1,0 +1,102 @@
+<!-- Inicio row -->
+
+<div class="row">
+  <!-- 1ra card -->
+  <div class="col-lg-6 col-6">
+    <!-- small card -->
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>Departamento</h3>
+      </div>
+      <div class="icon">
+        <i class="fas fa-building"></i>
+      </div>
+      <a href="{% url 'app:lista_departamento' %}" class="small-box-footer">
+        ir <i class="fas fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <!-- 2da card -->
+  <div class="col-lg-6 col-6">
+    <!-- small card -->
+    <div class="small-box bg-success">
+      <div class="inner">
+        <h3>Jefe Departamento</h3>
+      </div>
+      <div class="icon">
+        <i class="fas fa-address-card"></i>
+      </div>
+      <a href="{% url 'app:lista_jefe_departamento' %}" class="small-box-footer">
+        ir <i class="fas fa-arrow-circle-right"></i>
+      </a>
+
+    </div>
+  </div>
+  <!-- 3ra card -->
+  <div class="col-lg-6 col-6">
+    <!-- small card -->
+    <div class="small-box bg-gradient-blue">
+      <div class="inner">
+        <h3>Responsable</h3>
+      </div>
+      <div class="icon">
+        <i class="fas fa-user"></i>
+      </div>
+      <a href="{% url 'app:lista_responsable_patrimonio' %}" class="small-box-footer">
+        ir <i class="fas fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+  <!-- 4ta card -->
+  <div class="col-lg-6 col-6">
+    <!-- small card -->
+    <div class="small-box bg-danger">
+
+      <div class="inner">
+        <h3>Dirección Bienes</h3>
+      </div>
+      <div class="icon">
+        <i class="fas fa-book"></i>
+      </div>
+      <a href="{% url 'app:lista_direccion_bienes' %}" class="small-box-footer">
+        ir <i class="fas fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+  <!-- 5ta card -->
+  <div class="col-lg-6 col-6">
+    <!-- small card -->
+    <div class="small-box bg-teal">
+
+      <div class="inner">
+        <h3>Inventarios</h3>
+      </div>
+      <div class="icon">
+        <i class="fas fa-archive"></i>
+      </div>
+      <a href="{% url 'app:lista_inventario' %}" class="small-box-footer">
+        ir <i class="fas fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+  <!-- 6ta card -->
+  <div class="col-lg-6 col-6">
+    <!-- small card -->
+    <div class="small-box bg-gradient-indigo">
+
+      <div class="inner">
+        <h3>Busqueda</h3>
+      </div>
+      <div class="icon">
+        <i class="fas fa-search"></i>
+      </div>
+      <a href="{% url 'app:busqueda_inventario' %}" class="small-box-footer">
+        ir <i class="fas fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+</div>
+<!-- End row -->
+
+{% include "historial.html" %}

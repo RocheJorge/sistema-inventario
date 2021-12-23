@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ingreso</title>
+
+    <link rel="shortcut icon" href="{% static 'img/favicon_GMVV_2.ico' %}">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="{% static 'lib/adminlte-3.1.0/plugins/fontawesome-free/css/all.min.css' %}"
+    />
+    <!-- Theme style -->
+    <link
+      rel="stylesheet"
+      href="{% static 'lib/adminlte-3.1.0/css/adminlte.min.css' %}"
+    />
+    <!-- sweet alert Offline -->
+    <script src="{% static 'lib/sweetAlert2/dist/sweetalert2.all.min.js' %}"></script>
+
+    <!-- Estilo personal -->
+    <link
+      rel="stylesheet"
+      href="{% static 'lib/styles.css' %}"
+    />
+
+  </head>
+  
+  <body class="hold-transition login-page">
+  
+    <div class="login-box">
+      <div class="login-logo">
+        <a href="#"><b>Bienes</b> Muebles</a>
+      </div>
+      <!-- /.login-logo -->
+      <div class="card">
+        <div class="card-body login-card-body">
+          <p class="login-box-msg">Inicio Sesión</p>
+
+          <form action="" method="POST">
+            {% csrf_token %}
+            
+            <!-- Inicio del Mensaje de errores -->
+            {% if form.errors %}
+            <script>
+              Swal.fire({
+                title: 'Error Inicio Sesion',
+                text: 'Introduzca un nombre de usuario y clave correctos. Observe que ambos campos pueden ser sensibles a mayúsculas.',
+                icon: 'error',
+              })
+            </script>
+            {% endif %}
+            <!-- Fin del Mensaje de errores -->
+
+            <div class="input-group mb-3">
+              <!-- este form viene de forms.py de la app usuario -->
+              {{ form.username }}
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-user"></span>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <!-- este form viene de forms.py de la app usuario -->
+              {{ form.password }}
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <button type="submit" class="btn bg-red btn-block">
+                Ingresar
+              </button>
+              <!-- /.col -->
+            </div>
+            
+          </form>
+
+          <p class="mb-1">
+            <a href="#">Olvide mi contraseña</a>
+          </p>
+        </div>
+        <!-- /.login-card-body -->
+      </div>
+    </div>
+    <!-- /.login-box -->
+
+    <!-- jQuery -->
+    <script src="{% static 'lib/adminlte-3.1.0/plugins/jquery/jquery.min.js' %}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{% static 'lib/adminlte-3.1.0/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- AdminLTE App -->
+    <script src="{% static 'lib/adminlte-3.1.0/js/adminlte.min.js' %}"></script>
+
+  </body>
+</html>

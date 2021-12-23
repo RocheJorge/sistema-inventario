@@ -1,0 +1,56 @@
+{% extends 'lista.html' %}
+
+{% block columnas %}
+
+<tr>
+  <th scope="col" style="width: 20%">N° PROVISIONAL DEL BIEN</th>
+  <th scope="col" style="width: 20%">NOMBRE</th>
+  <th scope="col" style="width: 20%">DESCRIPCION</th>
+  <th scope="col" style="width: 20%">CARACTERISTICAS</th>
+  <th scope="col" style="width: 20%">ESTADO</th>
+  <th scope="col" style="width: 20%">UBICACION</th>
+  <th scope="col" style="width: 20%">OBSERVACION</th>
+  <th scope="col" style="width: 20%">OPCIONES</th>
+</tr>
+
+<!-- Mensaje de actualizado correctamente -->
+{% if messages %}
+     {% for message in messages %}
+        <script>
+          Swal.fire({
+          title: 'Completado',
+          text: '{{ message|safe }}',
+          icon: 'success',
+          })
+        </script>
+     {% endfor %}
+ {% endif %}
+
+{% endblock columnas %}
+
+{% block filas %} 
+
+{% for bc in object_list %}
+<tr>
+  <td>{{ bc.codigoDelBien }}</td>
+  <td>{{ bc.nombre }}</td>
+  <td>{{ bc.descripcion }}</td>
+  <td>{{ bc.caracteristica }}</td>
+  <td>{{ bc.estado }}</td>
+  <td>{{ bc.departamento}}</td>
+  <td>{{ bc.observacion }}</td>
+  <td>
+    <a href="{% url 'app:editar_inventario_banhavi_cobranza' bc.id %}"
+      ><button type="button" class="btn btn-primary btn-sm">
+        <i class="fas fa-edit"></i></button
+    ></a>
+
+    <a href="{% url 'app:eliminar_inventario_banhavi_cobranza' bc.id %}"
+      ><button type="button" class="btn btn-danger btn-sm">
+        <i class="fas fa-trash-alt"></i></button
+    ></a>
+  </td>
+</tr>
+{% endfor %} 
+
+{% endblock filas %}

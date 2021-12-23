@@ -1,0 +1,52 @@
+{% extends 'lista.html' %}
+
+{% block columnas %}
+
+<tr>
+  <th scope="col" style="width: 20%">NOMBRE</th>
+  <th scope="col" style="width: 20%">APELLIDO</th>
+  <th scope="col" style="width: 20%">CEDULA</th>
+  <th scope="col" style="width: 20%">CARGO</th>
+  <th scope="col" style="width: 20%">DEPARTAMENTO</th>
+  <th scope="col" style="width: 20%">OPCIONES</th>
+</tr>
+
+<!-- Mensaje de actualizado correctamente -->
+{% if messages %}
+     {% for message in messages %}
+        <script>
+          Swal.fire({
+          title: 'Completado',
+          text: '{{ message|safe }}',
+          icon: 'success',
+          })
+        </script>
+     {% endfor %}
+ {% endif %}
+
+{% endblock columnas %}
+
+{% block filas %} 
+
+{% for jefe in object_list %}
+<tr>
+  <td>{{ jefe.nombre }}</td>
+  <td>{{ jefe.apellido }}</td>
+  <td>{{ jefe.cedula }}</td>
+  <td>{{ jefe.cargo }}</td>
+  <td>{{ jefe.departamento }}</td>
+  <td>
+    <a href="{% url 'app:editar_jefe_departamento' jefe.id %}"
+      ><button type="button" class="btn btn-primary btn-sm">
+        <i class="fas fa-edit"></i></button
+    ></a>
+
+    <a href="{% url 'app:eliminar_jefe_departamento' jefe.id %}"
+      ><button type="button" class="btn btn-danger btn-sm">
+        <i class="fas fa-trash-alt"></i></button
+    ></a>
+  </td>
+</tr>
+{% endfor %} 
+
+{% endblock filas %}

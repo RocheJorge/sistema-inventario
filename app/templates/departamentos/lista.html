@@ -1,0 +1,44 @@
+{% extends 'lista.html' %} 
+
+{% block columnas %}
+
+<tr>
+  <th scope="col" style="width: 20%">NOMBRE DEL DEPARTAMENTO</th>
+  <th scope="col" style="width: 20%">OPCIONES</th>
+</tr>
+
+<!-- Mensaje de actualizado correctamente -->
+{% if messages %}
+     {% for message in messages %}
+        <script>
+          Swal.fire({
+          title: 'Completado',
+          text: '{{ message|safe }}',
+          icon: 'success',
+          })
+        </script>
+     {% endfor %}
+ {% endif %}
+
+{% endblock columnas %} 
+
+{% block filas %} 
+
+{% for c in object_list %}
+<tr>
+  <td>{{ c.nombre }}</td>
+  <td>
+    <a href="{% url 'app:editar_departamento' c.id %}"
+      ><button type="button" class="btn btn-primary btn-sm">
+        <i class="fas fa-edit"></i></button
+    ></a>
+
+    <a href="{% url 'app:eliminar_departamento' c.id %}"
+      ><button type="button" class="btn btn-danger btn-sm">
+        <i class="fas fa-trash-alt"></i></button
+    ></a>
+  </td>
+</tr>
+{% endfor %}
+
+{% endblock filas %}
