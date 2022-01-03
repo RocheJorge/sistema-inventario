@@ -10,44 +10,6 @@
     </li>
   </ul>
   <ul class="navbar-nav ml-auto">
-    <!-- Inicio barra de busqueda -->
-    <li class="nav-item">
-      <a class="nav-link" data-widget="navbar-search" href="{% url 'app:busqueda_inventario' %}" role="button">
-        <i class="fas fa-search"></i>
-      </a>
-      <div class="navbar-search-block" style="display: none;">
-        <form class="form-inline" method="GET">
-          <div class="input-group input-group-sm">
-            <input class="form-control form-control-navbar" type="search" placeholder="Ingrese bien mueble" aria-label="Search" name="buscar">
-            <div class="input-group-append">
-              <button class="btn btn-navbar" type="submit">
-                <i class="fas fa-search"></i>
-              </button>
-              <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </li>
-    <!-- Fin barra de busqueda -->
-    <li class="nav-item dropdown">
-      <a class="nav-link" data-toggle="dropdown" href="#">
-        <i class="fas fa-users-cog"></i>
-      </a>
-      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-        <span class="dropdown-header">
-          Último Acceso: 12 de Abril de 2020
-        </span>
-        <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
-          <i class="fas fa-edit mr-2"></i> Ver perfil
-        </a>
-        <div class="dropdown-divider"></div>
-        <div class="dropdown-divider"></div>
-      </div>
-    </li>
     <li class="nav-item">
       <a class="nav-link" href="{% url 'logout' %}">
         <i class="fas fa-power-off" aria-hidden="true"></i>

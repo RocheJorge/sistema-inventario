@@ -1,1 +1,26 @@
-{% extends "eliminar.html" %}
+{% extends 'index.html' %}
+{% load static %}
+
+{% block contenido %}
+
+<form method="POST">
+  <div class="card card-default">
+    <div class="card-header">
+      <h3 class="card-title">
+        <i class="fas fa-plus"></i>
+        {{ titulo_form }}
+      </h3>
+    </div>
+    <div class="card-body">
+      {% csrf_token %}
+      <h5><i class="icon fas fa-ban"></i> Notificacion!</h5>
+      <div class="alert alert-danger alert-dismissible">
+        ¿Estas seguro de eliminar el registro "{{ object.username|upper }}"?
+      </div>
+      <button type="submit" class="btn btn-danger"> Confirmar </button>
+      <a href="{{ lista_url }}"><button type="button" class="btn btn-primary"> Cancelar </button></a>
+    </div>
+  </div>
+</form>
+
+{% endblock contenido %}
