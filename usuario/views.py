@@ -78,9 +78,6 @@ class Login(FormView):
 def logoutUsuario(request):
     logout(request)
     return HttpResponseRedirect('/accounts/login/')
-
-class PerfilUsuarioView(TemplateView):
-    template_name = 'perfil.html'
     
 # Usuarios
 

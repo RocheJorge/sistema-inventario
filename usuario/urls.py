@@ -9,7 +9,7 @@
 
 from django.urls import path
 from django.contrib.auth.decorators import login_required
-from .views import PerfilUsuarioView, ListadoUsuario, RegistrarUsuario, EditarUsuario, EliminarUsuario
+from .views import ListadoUsuario, RegistrarUsuario, EditarUsuario, EliminarUsuario
 
 """Creamos las rutas de las vistas para los templates
 
@@ -22,7 +22,6 @@ from .views import PerfilUsuarioView, ListadoUsuario, RegistrarUsuario, EditarUs
 app_name = "usuario"
 
 urlpatterns = [
-    path('perfil/', PerfilUsuarioView.as_view(), name='perfil_usuario'),
     path('listado_usuario/', login_required(ListadoUsuario.as_view()), name='listar_usuarios'),
     path('registrar_usuario/', login_required(RegistrarUsuario.as_view()), name='registrar_usuario'),
     path('editar_usuario/<int:pk>/', login_required(EditarUsuario.as_view()), name='editar_usuario'),
