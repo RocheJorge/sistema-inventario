@@ -16,8 +16,6 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from django.conf import settings
-from django.conf.urls.static import static
 # importamos el login requerido para el inicio de sesion
 from django.contrib.auth.decorators import login_required
 # importamos inicio y paginas de errores 404
@@ -34,4 +32,4 @@ urlpatterns = [
     path('accounts/login/', Login.as_view()),
     # ruta del logout
     path('logout/', login_required(logoutUsuario), name='logout'),
-] +static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
