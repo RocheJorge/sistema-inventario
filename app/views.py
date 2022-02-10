@@ -11,7 +11,6 @@
 """
 
 
-from django.http.response import Http404
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 from .models import Departamento, InventarioInmobiliariaNacional, InventarioIntu, JefeDepartamento, ResponsablePatrimonio, DireccionBienes, InventarioAdministracion, InventarioAsesoriaLegal, InventarioAtencionCiudadano, InventarioBanhaviCobranza, InventarioBanhaviFao, InventarioBarrioNuevoTricolor, InventarioDireccion, InventarioGestionHumana, InventarioInmobiliariaNacional, InventarioIntu, InventarioObras, InventarioRedesPopulares, InventarioSalaSituacional, InventarioSaren, InventarioJubilados, InventarioSistemas, InventarioSunavi, InventarioVivienda
 from .forms import RegistrarDepartamentoForm, JefeDepartamentoForm, ResponsablePatrimonioForm, DireccionBienesForm, InventarioForm, InventarioAsesoriaLegalForm, InventarioAtencionCiudadanoForm, InventarioBanhaviCobranzaForm, InventarioBanhaviFaoForm, InventarioBarrioNuevoTricolorForm, InventarioDireccionForm, InventarioGestionHumanaForm, InventarioInmobiliariaNacionalForm, InventarioIntuForm, InventarioObrasForm, InventarioRedesPopularesForm, InventarioSalaSituacionalForm, InventarioSarenForm, InventarioJubiladosForm, InventarioSistemasForm, InventarioSunaviForm, InventarioViviendaForm
@@ -1437,4 +1436,3 @@ class InventarioViviendaDeleteView(DeleteView):
         context["titulo_form"] = 'Eliminar'
         context["lista_url"] = reverse_lazy('app:lista_inventario_vivienda')
         return context
-    

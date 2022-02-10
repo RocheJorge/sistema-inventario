@@ -6,7 +6,7 @@
 """
 
 from django.forms.models import ModelForm
-from django.forms import TextInput
+from django.forms import NumberInput, TextInput
 from .models import Departamento, JefeDepartamento, ResponsablePatrimonio, DireccionBienes, InventarioAdministracion, InventarioAsesoriaLegal, InventarioAtencionCiudadano, InventarioBanhaviCobranza, InventarioBanhaviFao, InventarioBarrioNuevoTricolor, InventarioDireccion, InventarioGestionHumana, InventarioInmobiliariaNacional, InventarioIntu, InventarioObras, InventarioRedesPopulares, InventarioSalaSituacional, InventarioSaren, InventarioJubilados, InventarioSistemas, InventarioSunavi, InventarioVivienda
 
 '''""""""""""""""""" Form del Departamento """""""""""""""""""""""""""'''
@@ -75,7 +75,7 @@ class JefeDepartamentoForm(ModelForm):
                     'placeholder': 'Ingrese apellido'
                 }
             ),
-            'cedula': TextInput (
+            'cedula': NumberInput (
                 attrs={
                     'placeholder': 'Ingrese cedula'
                 }
@@ -111,7 +111,7 @@ class ResponsablePatrimonioForm(ModelForm):
                     'placeholder': 'Ingrese apellido'
                 }
             ),
-            'cedula': TextInput (
+            'cedula': NumberInput (
                 attrs={
                     'placeholder': 'Ingrese cedula'
                 }
@@ -147,7 +147,7 @@ class DireccionBienesForm(ModelForm):
                     'placeholder': 'Ingrese apellido'
                 }
             ),
-            'cedula': TextInput (
+            'cedula': NumberInput (
                 attrs={
                     'placeholder': 'Ingrese cedula'
                 }

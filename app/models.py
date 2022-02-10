@@ -35,7 +35,7 @@ class ResponsablePatrimonio(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50, verbose_name='Nombre', unique=True)
     apellido = models.CharField(max_length=50, verbose_name='Apellido')
-    cedula = models.CharField(max_length=15, verbose_name='Cedula')
+    cedula = models.PositiveIntegerField()
     cargo = models.CharField(max_length=50, verbose_name='Cargo')
     history = HistoricalRecords()
     
@@ -51,7 +51,7 @@ class JefeDepartamento(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50, verbose_name='Nombre', unique=True)
     apellido = models.CharField(max_length=50, verbose_name='Apellido')
-    cedula = models.CharField(max_length=15, verbose_name='Cedula')
+    cedula = models.PositiveIntegerField()
     cargo = models.CharField(max_length=50, verbose_name='Cargo')
     departamento = models.ForeignKey(Departamento, verbose_name='Jef@ del Departamento', on_delete=models.CASCADE)
     history = HistoricalRecords()
@@ -68,7 +68,7 @@ class DireccionBienes(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50, verbose_name='Nombre', unique=True)
     apellido = models.CharField(max_length=50, verbose_name='Apellido')
-    cedula = models.CharField(max_length=15, verbose_name='Cedula')
+    cedula = models.PositiveIntegerField()
     cargo = models.CharField(max_length=50, verbose_name='Cargo')
     history = HistoricalRecords()
     
@@ -83,25 +83,29 @@ class DireccionBienes(models.Model):
 class InventarioBase(models.Model):
     id = models.AutoField(primary_key= True)
     codigoDelBien = models.CharField(max_length=50, verbose_name='N° Provisional del Bien', unique=True)
-    nombre = models.CharField(max_length=50, verbose_name='Nombre')
-    descripcion = models.CharField(max_length=50, verbose_name='Descripcion')
-    caracteristica = models.CharField(max_length=50, verbose_name='Caracteristicas')
-    estado = models.CharField(max_length=20, verbose_name='Estado de Conservacion')
+    nombre = models.CharField(max_length=100, verbose_name='Nombre')
+    descripcion = models.CharField(max_length=200, verbose_name='Descripcion')
+    caracteristica = models.CharField(max_length=200, verbose_name='Caracteristicas')
+    estado = models.CharField(max_length=50, verbose_name='Estado de Conservacion')
     departamento = models.ForeignKey(Departamento, on_delete=models.SET_NULL, null=True, verbose_name='Departamento')
-    observacion = models.CharField(max_length=50, verbose_name='Observacion', null=True, blank=True)
-    history = HistoricalRecords()
+    observacion = models.CharField(max_length=200, verbose_name='Observacion', null=True, blank=True)
+    
     
     class Meta:
         """Meta creada para que los demas inventarios hereden sus atributos
         
             abstract: No aparecera en la base de datos pero todos heredaran sus atributos
         """
-        
+
         
         abstract = True
         
 # Inventario Administracion
 class InventarioAdministracion(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Administracion'
@@ -109,6 +113,10 @@ class InventarioAdministracion(InventarioBase):
         
 # Inventario Asesoria legal
 class InventarioAsesoriaLegal(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Asesoria Legal'
@@ -116,6 +124,10 @@ class InventarioAsesoriaLegal(InventarioBase):
         
 # Inventario Atencion al Ciudadano
 class InventarioAtencionCiudadano(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Atencion Ciudadano'
@@ -123,6 +135,10 @@ class InventarioAtencionCiudadano(InventarioBase):
         
 # Inventario Banhavi Cobranza
 class InventarioBanhaviCobranza(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Banhavi Cobranza'
@@ -130,6 +146,10 @@ class InventarioBanhaviCobranza(InventarioBase):
         
 # Inventario Banhavi FAO
 class InventarioBanhaviFao(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Banhavi Fao'
@@ -137,6 +157,10 @@ class InventarioBanhaviFao(InventarioBase):
         
 # Inventario Barrio Nuevo Barrio Tricolor
 class InventarioBarrioNuevoTricolor(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Barrio Nuevo Barrio Tricolor'
@@ -144,6 +168,10 @@ class InventarioBarrioNuevoTricolor(InventarioBase):
         
 # Inventario Direccion
 class InventarioDireccion(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Direccion'
@@ -151,6 +179,10 @@ class InventarioDireccion(InventarioBase):
         
 # Inventario Gestion Humana
 class InventarioGestionHumana(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Gestion Humana'
@@ -158,6 +190,10 @@ class InventarioGestionHumana(InventarioBase):
         
 # Inventario Inmobiliaria Nacional
 class InventarioInmobiliariaNacional(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Inmobiliaria Nacional'
@@ -165,6 +201,10 @@ class InventarioInmobiliariaNacional(InventarioBase):
         
 # Inventario Intu
 class InventarioIntu(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Intu'
@@ -172,6 +212,10 @@ class InventarioIntu(InventarioBase):
         
 # Inventario Obras
 class InventarioObras(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Obras'
@@ -179,6 +223,10 @@ class InventarioObras(InventarioBase):
         
 # Inventario Redes Populares
 class InventarioRedesPopulares(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Redes Populares'
@@ -186,6 +234,10 @@ class InventarioRedesPopulares(InventarioBase):
         
 # Inventario Sala Situacional
 class InventarioSalaSituacional(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Sala Situacional'
@@ -193,6 +245,10 @@ class InventarioSalaSituacional(InventarioBase):
         
 # Inventario Saren
 class InventarioSaren(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Saren'
@@ -200,6 +256,10 @@ class InventarioSaren(InventarioBase):
         
 # Inventario Jubilados
 class InventarioJubilados(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Jubilados'
@@ -207,6 +267,10 @@ class InventarioJubilados(InventarioBase):
         
 # Inventario Sistemas
 class InventarioSistemas(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Sistemas'
@@ -214,6 +278,10 @@ class InventarioSistemas(InventarioBase):
         
 # Inventario Sunavi
 class InventarioSunavi(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Sunavi'
@@ -221,6 +289,10 @@ class InventarioSunavi(InventarioBase):
         
 # Inventario Vivienda
 class InventarioVivienda(InventarioBase):
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.codigoDelBien
     
     class Meta:
         verbose_name = 'Inventario Vivienda'
